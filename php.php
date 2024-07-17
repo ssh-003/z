@@ -14,7 +14,7 @@ $connect_data = json_decode($connect_response, true);
 if ($connect_data['status'] === 'connected') {
     echo "Connected: " . $connect_data['message'] . "\n";
     while (true) {
-        $command = get_input("'~/$ ");
+        $command = get_input("~/$ ");
         if (strtolower($command) === 'exit') {
             break;
         }
