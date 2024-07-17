@@ -1,5 +1,5 @@
-pip install Python 
+pkg install Python 
 clear 
+ifconfig 
 ls 
-ifconfig
-echo 'python py.py' 
+echo 'run "  python py.py  " command' 
